@@ -32,9 +32,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
 /* hero */
 .hero{background:var(--navy);color:var(--ivory);max-width:none;padding:56px 24px 72px;position:relative;overflow:hidden;text-align:center}
 .hero>.in{max-width:520px;margin:0 auto;position:relative;z-index:1}
-.feather{position:absolute;top:-10px;width:120px;height:240px;opacity:.5;pointer-events:none}
-.feather.l{left:-18px;transform:rotate(-16deg)}
-.feather.r{right:-18px;transform:scaleX(-1) rotate(-16deg)}
+.feather{position:absolute;top:36px;width:84px;height:168px;opacity:.4;pointer-events:none}
+.feather.l{left:-22px;transform:rotate(-16deg)}
+.feather.r{right:-22px;transform:scaleX(-1) rotate(-16deg)}
 .blessing{font-family:var(--serif);font-size:1.15rem;color:#d9bf85;letter-spacing:.04em;margin-bottom:28px}
 .arch{width:min(78vw,320px);aspect-ratio:4/5;margin:0 auto 34px;border-radius:999px 999px 6px 6px;overflow:hidden;border:1px solid var(--gold);padding:7px}
 .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;border-radius:999px 999px 2px 2px;display:block}
@@ -229,14 +229,15 @@ const CONFIG = {
   groom: "Soumen Pal",
   siteUrl: "",             // after deploying, paste your final link here (used by the QR code)
   music: "song.mp3",               // optional: "music.mp3" (put the file in the same folder). Empty = soft built-in melody
+  autoMusic: true,         // true = music starts on the visitor's first tap (or at once if the browser allows). false = only the ♪ button
   showBlessings: true,     // false = hide Blessing zone
   giftEmail: "palsoumen@zohomail.in",
   upiId: "palsoumenp@axl",
   upiName: "Soumen Pal",
   showCards: true,         // false = hide invitation cards + QR
   cards: [
-    { key: "brC", file: "card-bride.jpg", download: "Piu-Soumen-Invitation-Bride-Side.jpg" },
-    { key: "grC", file: "card-groom.jpg", download: "Piu-Soumen-Invitation-Groom-Side.jpg" }
+    { key: "brC", file: "card-bride.jpg", pdf: "card-bride.pdf", download: "Piu-Soumen-Invitation-Bride-Side.jpg", pdfName: "Piu-Soumen-Invitation-Bride-Side.pdf" },
+    { key: "grC", file: "card-groom.jpg", pdf: "card-groom.pdf", download: "Piu-Soumen-Invitation-Groom-Side.jpg", pdfName: "Piu-Soumen-Invitation-Groom-Side.pdf" }
   ],
   showTrains: true,        // false = hide train section
   trains: [
@@ -282,7 +283,7 @@ en:{names:["Piu","&","Soumen"],music:"Music",
  rsvpT:"Will you join us?",rsvpL:"Let us know you're coming so we can welcome you properly.",rsvpB:"Confirm on WhatsApp",rsvpS:"Share this invitation",
  blB:"Blessing zone: tap to open",blL:"Your presence and blessings mean the most. If you wish to send a gift from afar, here is how.",
  gT:"Gift card",gN:"Send an e-gift card to this email",cpE:"Copy email",uT:"UPI",uN:"Send a gift with any UPI app",cpU:"Copy UPI ID",pay:"Pay with UPI app",
- cdB:"Invitation cards: tap to download",cdL:"Download the card to keep or share.",dl:"Download card",brC:"Bride's side card",grC:"Groom's side card",qrT:"QR code for printed cards",qrD:"Download QR",
+ cdB:"Invitation cards: tap to download",cdL:"Download the card to keep or share.",dl:"Download card",dlPdf:"Download PDF",brC:"Bride's side card",grC:"Groom's side card",qrT:"QR code for printed cards",qrD:"Download QR",
  foot:"Your blessings and presence will make our day complete.",
  copied:"Copied",copyFail:"Press and hold the text to copy",linkC:"Link copied",calD:"Calendar file downloaded"},
 hi:{names:["पीयू","और","सौमेन"],music:"संगीत",
@@ -295,7 +296,7 @@ hi:{names:["पीयू","और","सौमेन"],music:"संगीत",
  rsvpT:"क्या आप हमारे साथ होंगे?",rsvpL:"अपने आने की सूचना दें ताकि हम आपका स्वागत कर सकें।",rsvpB:"WhatsApp पर पुष्टि करें",rsvpS:"यह निमंत्रण साझा करें",
  blB:"आशीर्वाद कोना: खोलने के लिए टैप करें",blL:"आपकी उपस्थिति और आशीर्वाद ही सबसे बड़ा उपहार है। यदि आप दूर से उपहार भेजना चाहें, तो यह रहा तरीका।",
  gT:"गिफ्ट कार्ड",gN:"इस ईमेल पर ई-गिफ्ट कार्ड भेजें",cpE:"ईमेल कॉपी करें",uT:"UPI",uN:"किसी भी UPI ऐप से उपहार भेजें",cpU:"UPI ID कॉपी करें",pay:"UPI ऐप से भुगतान करें",
- cdB:"निमंत्रण कार्ड: डाउनलोड के लिए टैप करें",cdL:"कार्ड डाउनलोड करें, सहेजें या साझा करें।",dl:"कार्ड डाउनलोड करें",brC:"वधू पक्ष का कार्ड",grC:"वर पक्ष का कार्ड",qrT:"छपे कार्ड के लिए QR कोड",qrD:"QR डाउनलोड करें",
+ cdB:"निमंत्रण कार्ड: डाउनलोड के लिए टैप करें",cdL:"कार्ड डाउनलोड करें, सहेजें या साझा करें।",dl:"कार्ड डाउनलोड करें",dlPdf:"PDF डाउनलोड करें",brC:"वधू पक्ष का कार्ड",grC:"वर पक्ष का कार्ड",qrT:"छपे कार्ड के लिए QR कोड",qrD:"QR डाउनलोड करें",
  foot:"आपकी उपस्थिति और आशीर्वाद से हमारा दिन पूरा होगा।",
  copied:"कॉपी हो गया",copyFail:"कॉपी करने के लिए टेक्स्ट को दबाए रखें",linkC:"लिंक कॉपी हो गया",calD:"कैलेंडर फ़ाइल डाउनलोड हुई"},
 bn:{names:["পিউ","ও","সৌমেন"],music:"সংগীত",
@@ -308,7 +309,7 @@ bn:{names:["পিউ","ও","সৌমেন"],music:"সংগীত",
  rsvpT:"আপনি কি আসছেন?",rsvpL:"আপনার আসার কথা জানান, যাতে আমরা ঠিকভাবে আপনাকে স্বাগত জানাতে পারি।",rsvpB:"WhatsApp-এ নিশ্চিত করুন",rsvpS:"এই আমন্ত্রণ শেয়ার করুন",
  blB:"আশীর্বাদ কোণ: খুলতে ট্যাপ করুন",blL:"আপনার উপস্থিতি ও আশীর্বাদই আমাদের সবচেয়ে বড় উপহার। দূর থেকে উপহার পাঠাতে চাইলে নিচের উপায়গুলো দেখুন।",
  gT:"গিফট কার্ড",gN:"এই ইমেলে ই-গিফট কার্ড পাঠান",cpE:"ইমেল কপি করুন",uT:"UPI",uN:"যেকোনো UPI অ্যাপ দিয়ে উপহার পাঠান",cpU:"UPI ID কপি করুন",pay:"UPI অ্যাপে পাঠান",
- cdB:"আমন্ত্রণপত্র: ডাউনলোড করতে ট্যাপ করুন",cdL:"কার্ড ডাউনলোড করে রাখুন বা শেয়ার করুন।",dl:"কার্ড ডাউনলোড করুন",brC:"কনে পক্ষের কার্ড",grC:"বর পক্ষের কার্ড",qrT:"ছাপানো কার্ডের জন্য QR কোড",qrD:"QR ডাউনলোড করুন",
+ cdB:"আমন্ত্রণপত্র: ডাউনলোড করতে ট্যাপ করুন",cdL:"কার্ড ডাউনলোড করে রাখুন বা শেয়ার করুন।",dl:"কার্ড ডাউনলোড করুন",dlPdf:"PDF ডাউনলোড করুন",brC:"কনে পক্ষের কার্ড",grC:"বর পক্ষের কার্ড",qrT:"ছাপানো কার্ডের জন্য QR কোড",qrD:"QR ডাউনলোড করুন",
  foot:"আপনার উপস্থিতি ও আশীর্বাদে আমাদের দিনটি পূর্ণ হবে।",
  copied:"কপি হয়েছে",copyFail:"কপি করতে লেখাটি চেপে ধরে রাখুন",linkC:"লিংক কপি হয়েছে",calD:"ক্যালেন্ডার ফাইল ডাউনলোড হয়েছে"},
 or:{names:["ପିଉ","ଓ","ସୌମେନ"],music:"ସଂଗୀତ",
@@ -321,7 +322,7 @@ or:{names:["ପିଉ","ଓ","ସୌମେନ"],music:"ସଂଗୀତ",
  rsvpT:"ଆପଣ କ’ଣ ଆସିବେ?",rsvpL:"ଆପଣଙ୍କ ଆସିବା ବିଷୟରେ ଜଣାନ୍ତୁ, ଯେପରି ଆମେ ଆପଣଙ୍କୁ ଭଲ ଭାବରେ ସ୍ୱାଗତ କରିପାରିବୁ।",rsvpB:"WhatsApp ରେ ନିଶ୍ଚିତ କରନ୍ତୁ",rsvpS:"ଏହି ନିମନ୍ତ୍ରଣ ସେୟାର୍ କରନ୍ତୁ",
  blB:"ଆଶୀର୍ବାଦ କୋଣ: ଖୋଲିବାକୁ ଟାପ୍ କରନ୍ତୁ",blL:"ଆପଣଙ୍କ ଉପସ୍ଥିତି ଓ ଆଶୀର୍ବାଦ ହିଁ ଆମ ପାଇଁ ସବୁଠୁ ବଡ଼ ଉପହାର। ଦୂରରୁ ଉପହାର ପଠାଇବାକୁ ଚାହିଁଲେ ଏହିପରି କରନ୍ତୁ।",
  gT:"ଗିଫ୍ଟ କାର୍ଡ",gN:"ଏହି ଇମେଲ୍‌କୁ ଇ-ଗିଫ୍ଟ କାର୍ଡ ପଠାନ୍ତୁ",cpE:"ଇମେଲ୍ କପି କରନ୍ତୁ",uT:"UPI",uN:"ଯେକୌଣସି UPI ଆପ୍ ଦ୍ୱାରା ଉପହାର ପଠାନ୍ତୁ",cpU:"UPI ID କପି କରନ୍ତୁ",pay:"UPI ଆପ୍ ରେ ପଠାନ୍ତୁ",
- cdB:"ନିମନ୍ତ୍ରଣ କାର୍ଡ: ଡାଉନଲୋଡ୍ ପାଇଁ ଟାପ୍ କରନ୍ତୁ",cdL:"କାର୍ଡ ଡାଉନଲୋଡ୍ କରି ରଖନ୍ତୁ କିମ୍ବା ସେୟାର୍ କରନ୍ତୁ।",dl:"କାର୍ଡ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",brC:"କନ୍ୟା ପକ୍ଷର କାର୍ଡ",grC:"ବର ପକ୍ଷର କାର୍ଡ",qrT:"ଛପା କାର୍ଡ ପାଇଁ QR କୋଡ୍",qrD:"QR ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+ cdB:"ନିମନ୍ତ୍ରଣ କାର୍ଡ: ଡାଉନଲୋଡ୍ ପାଇଁ ଟାପ୍ କରନ୍ତୁ",cdL:"କାର୍ଡ ଡାଉନଲୋଡ୍ କରି ରଖନ୍ତୁ କିମ୍ବା ସେୟାର୍ କରନ୍ତୁ।",dl:"କାର୍ଡ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",dlPdf:"PDF ଡାଉନଲୋଡ୍ କରନ୍ତୁ",brC:"କନ୍ୟା ପକ୍ଷର କାର୍ଡ",grC:"ବର ପକ୍ଷର କାର୍ଡ",qrT:"ଛପା କାର୍ଡ ପାଇଁ QR କୋଡ୍",qrD:"QR ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
  foot:"ଆପଣଙ୍କ ଉପସ୍ଥିତି ଓ ଆଶୀର୍ବାଦରେ ଆମ ଦିନ ପୂର୍ଣ୍ଣ ହେବ।",
  copied:"କପି ହେଲା",copyFail:"କପି କରିବାକୁ ଲେଖାକୁ ଚାପି ଧରନ୍ତୁ",linkC:"ଲିଙ୍କ୍ କପି ହେଲା",calD:"କ୍ୟାଲେଣ୍ଡର ଫାଇଲ୍ ଡାଉନଲୋଡ୍ ହେଲା"},
 te:{names:["పియు","&","సౌమెన్"],music:"సంగీతం",
@@ -334,7 +335,7 @@ te:{names:["పియు","&","సౌమెన్"],music:"సంగీతం",
  rsvpT:"మీరు మాతో చేరతారా?",rsvpL:"మీ రాకను తెలియజేయండి, మేము మిమ్మల్ని సముచితంగా స్వాగతిస్తాము.",rsvpB:"WhatsAppలో నిర్ధారించండి",rsvpS:"ఈ ఆహ్వానాన్ని షేర్ చేయండి",
  blB:"ఆశీర్వాద విభాగం: తెరవడానికి నొక్కండి",blL:"మీ రాక, ఆశీర్వాదమే మాకు గొప్ప బహుమతి. దూరం నుండి బహుమతి పంపాలనుకుంటే ఇలా చేయండి.",
  gT:"గిఫ్ట్ కార్డ్",gN:"ఈ ఇమెయిల్‌కు ఈ-గిఫ్ట్ కార్డ్ పంపండి",cpE:"ఇమెయిల్ కాపీ చేయండి",uT:"UPI",uN:"ఏదైనా UPI యాప్‌తో బహుమతి పంపండి",cpU:"UPI ID కాపీ చేయండి",pay:"UPI యాప్‌తో చెల్లించండి",
- cdB:"ఆహ్వాన కార్డులు: డౌన్‌లోడ్ కోసం నొక్కండి",cdL:"కార్డ్‌ను డౌన్‌లోడ్ చేసుకుని ఉంచుకోండి లేదా షేర్ చేయండి.",dl:"కార్డ్ డౌన్‌లోడ్ చేయండి",brC:"వధువు వైపు కార్డ్",grC:"వరుడి వైపు కార్డ్",qrT:"ముద్రిత కార్డుల కోసం QR కోడ్",qrD:"QR డౌన్‌లోడ్ చేయండి",
+ cdB:"ఆహ్వాన కార్డులు: డౌన్‌లోడ్ కోసం నొక్కండి",cdL:"కార్డ్‌ను డౌన్‌లోడ్ చేసుకుని ఉంచుకోండి లేదా షేర్ చేయండి.",dl:"కార్డ్ డౌన్‌లోడ్ చేయండి",dlPdf:"PDF డౌన్‌లోడ్ చేయండి",brC:"వధువు వైపు కార్డ్",grC:"వరుడి వైపు కార్డ్",qrT:"ముద్రిత కార్డుల కోసం QR కోడ్",qrD:"QR డౌన్‌లోడ్ చేయండి",
  foot:"మీ రాక, ఆశీర్వాదంతో మా రోజు పరిపూర్ణమవుతుంది.",
  copied:"కాపీ అయింది",copyFail:"కాపీ చేయడానికి టెక్స్ట్‌ను నొక్కి ఉంచండి",linkC:"లింక్ కాపీ అయింది",calD:"క్యాలెండర్ ఫైల్ డౌన్‌లోడ్ అయింది"}
 };
@@ -413,8 +414,11 @@ function renderCards(){
   const el = $("#cardList"); if(!el) return;
   el.innerHTML = CONFIG.cards.map(c=>`
     <div class="cardbox"><h3>${t(c.key)}</h3>
-      <img src="${c.file}" alt="${t(c.key)}" loading="lazy">
-      <a class="btn" href="${c.file}" download="${c.download}">${t("dl")}</a></div>`).join("");
+      <img src="${c.file}" alt="${t(c.key)}">
+      <div class="actions" style="justify-content:center;margin-top:0">
+        <a class="btn" href="${c.file}" download="${c.download}">${t("dl")}</a>
+        ${c.pdf?`<a class="btn ghost" href="${c.pdf}" download="${c.pdfName}">${t("dlPdf")}</a>`:""}
+      </div></div>`).join("");
 }
 function applyLang(l){
   if(!I18N[l]) l = "en";
@@ -470,10 +474,11 @@ if(CONFIG.showBlessings){
 /* ---------- QR code ---------- */
 if(CONFIG.showCards){
   const url = CONFIG.siteUrl || location.href.split(/[?#]/)[0];
-  if(typeof QRCode !== "undefined"){
+  if(typeof QRCode === "undefined") document.querySelector(".qrbox").remove();
+  else {
     new QRCode($("#qr"),{text:url,width:200,height:200,colorDark:"#14224a",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
   }
-  $("#qrDl").onclick = ()=>{
+  if($("#qrDl")) $("#qrDl").onclick = ()=>{
     const c = $("#qr canvas"); if(!c) return;
     const a = document.createElement("a"); a.href = c.toDataURL("image/png"); a.download = "invitation-qr.png"; a.click();
   };
@@ -521,14 +526,34 @@ function stopSynth(){
   const old = ac, d = drones; drones = [];
   setTimeout(()=>{ d.forEach(o=>{try{o.stop()}catch(_){}}); if(old) old.close(); }, 900);
 }
-musicBtn.onclick = ()=>{
-  playing = !playing;
-  musicBtn.setAttribute("aria-pressed", playing);
+let userChose = false;
+function setMusic(on){
+  playing = on;
+  musicBtn.setAttribute("aria-pressed", on);
   if(CONFIG.music){
     audio = audio || Object.assign(new Audio(CONFIG.music),{loop:true,volume:.4});
-    playing ? audio.play().catch(()=>{}) : audio.pause();
-  } else playing ? startSynth() : stopSynth();
-};
+    if(on) return audio.play().catch(()=>{ playing = false; musicBtn.setAttribute("aria-pressed", false); });
+    audio.pause();
+  } else on ? startSynth() : stopSynth();
+}
+musicBtn.onclick = ()=>{ userChose = true; setMusic(!playing); };
+
+/* Default on: browsers block sound until the visitor interacts, so try now,
+   and if blocked, start music on the first tap, click or key press anywhere. */
+if(CONFIG.autoMusic){
+  const evs = ["click","touchend","keydown"];
+  const stop = ()=>evs.forEach(n=>document.removeEventListener(n,first,true));
+  function first(e){
+    stop();
+    if(userChose || e.target.closest("#music")) return;
+    setMusic(true);
+  }
+  evs.forEach(n=>document.addEventListener(n,first,true));
+  if(CONFIG.music){
+    audio = Object.assign(new Audio(CONFIG.music),{loop:true,volume:.4});
+    audio.play().then(()=>{ playing = true; musicBtn.setAttribute("aria-pressed", true); stop(); }).catch(()=>{});
+  }
+}
 
 /* ---------- language ---------- */
 $("#langSel").onchange = e=>applyLang(e.target.value);
